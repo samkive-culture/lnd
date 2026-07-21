@@ -119,9 +119,12 @@
   }
 
   /* Wide card (case 03) */
-  .cf-wide { display: grid; grid-template-columns: 1fr 42%; gap: 2rem; align-items: stretch; height: 100%; }
-  .cf-wide .card-photo { margin: 0; border-radius: 14px; }
-  .cf-wide .card-photo img { border-radius: 14px; }
+  .cf-wide { display: grid; grid-template-columns: 1fr 52%; gap: 2rem; align-items: stretch; height: 100%; }
+  .cf-wide .card-photo { margin: 0; border-radius: 14px; display: flex; align-items: center; background: var(--canvas); }
+  .cf-wide .card-photo img { border-radius: 14px; height: auto; }
+  .cf-wide .card-photo::after { display: none; }
+  .cf-wide .cf-stack { display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+  .cf-wide .cf-stack img { border-radius: 12px; }
   .cb-open { font-size: 0.97rem; font-weight: 500; color: var(--ink); line-height: 1.65; margin-bottom: 1.8rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); word-break: keep-all; }
   .cb-acts { list-style: none; }
   .cb-acts li { display: flex; gap: 0.9rem; align-items: baseline; padding: 0.82rem 0; border-bottom: 1px solid var(--line); font-size: 0.88rem; color: #333; line-height: 1.78; }
@@ -134,10 +137,16 @@
   .cb-imgs.single .cb-img-box { width: 100%; }
   .cb-img-box img { width: 100%; height: 155px; object-fit: cover; display: block; }
   .cb-img-box video { width: 100%; height: 155px; object-fit: cover; display: block; }
-  .cb-imgs.single .cb-img-box img { height: 155px; }
-  /* Wide card (Case 03) back: taller media so the two shots are legible */
-  .case-card--wide .cb-img-box img,
-  .case-card--wide .cb-img-box video { height: 300px; }
+  .cb-imgs.single .cb-img-box img { width: 100%; height: 260px; object-fit: cover; object-position: center top; }
+  /* Case 01: fewer bullets, so let the two photos breathe */
+  #card-01 .cb-img-box img { height: 360px; }
+  /* Wide card (Case 03) back: video (left) + guidebook mockup (right), matched height */
+  .case-card--wide .cb-vidwrap { display: flex; gap: 12px; align-items: stretch; }
+  .case-card--wide .cb-vidwrap .cb-v-vid { flex: 0 0 38%; }
+  .case-card--wide .cb-vidwrap .cb-v-guide { flex: 1; }
+  .case-card--wide .cb-vidwrap .cb-img-box { height: 300px; }
+  .case-card--wide .cb-vidwrap video { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .case-card--wide .cb-vidwrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
   .cb-cap { font-size: 0.74rem; color: var(--muted); margin-top: 0.5rem; margin-bottom: 1.5rem; line-height: 1.5; }
   .cb-result { background: var(--adim); border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0; padding: 1.4rem 1.6rem; margin-top: 1.8rem; }
   .cb-nums { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
@@ -204,7 +213,7 @@
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#cases">Cases</a>
-    <a href="#retro">회고</a>
+    <a href="#retro">Retrospective</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
@@ -396,8 +405,9 @@
           <div class="card-num">03</div>
           <h3 class="card-title">배움이<br>반복 가능하려면</h3>
         </div>
-        <div class="card-photo">
-          <img src="images/systems1.jpg" alt="직무 교육 영상">
+        <div class="card-photo cf-stack">
+          <img src="images/systems_title.jpg" alt="직무 교육 영상 타이틀">
+          <img src="images/systems2.jpg" alt="셀프서브 기술 가이드북">
         </div>
       </div>
       <div class="card-back" id="back-03">
@@ -425,11 +435,11 @@
             애자일 콘텐츠 운영 구조를 만들었습니다.
           </li>
         </ul>
-        <div class="cb-imgs">
-          <div class="cb-img-box"><video src="images/systems1.mp4" poster="images/systems1.jpg" autoplay muted loop playsinline aria-label="직무 교육 영상 클립"></video></div>
-          <div class="cb-img-box"><img src="images/systems2.jpg" alt="셀프서브 기술 가이드북"></div>
+        <div class="cb-imgs cb-vidwrap">
+          <div class="cb-img-box cb-v-vid"><video src="images/systems1.mp4" poster="images/systems1.jpg" autoplay muted loop playsinline aria-label="직무 교육 영상 클립"></video></div>
+          <div class="cb-img-box cb-v-guide"><img src="images/systems2.jpg" alt="셀프서브 기술 가이드북"></div>
         </div>
-        <p class="cb-cap">독학으로 제작한 직무 교육 영상 (좌) / 비개발 직군을 위한 셀프서브 기술 가이드북 (우)</p>
+        <p class="cb-cap">Premiere Pro 독학으로 제작한 직무 교육 영상 (좌) / 셀프서브 기술 가이드북 (우)</p>
         <div class="cb-result">
           <p class="cb-rtext">대규모 신규 합류에도 동일한 교육 품질이 유지되는 반복 가능한 성장 구조를 직접 증명해 냈습니다. 배운 사람이 다시 만드는 사람이 되는 것 — 그것이 제가 정의하는 교육의 완성입니다.</p>
         </div>
@@ -473,7 +483,6 @@
   <p class="contact-sub">눈에 띄지 않아도, 연결한 사람들이 더 높이 자랄 때 제 역할을 다합니다.</p>
   <div class="contact-btns">
     <a href="mailto:bobsemi@me.com" class="btn-primary">이메일 보내기</a>
-    <a href="https://my.surfit.io/w/693759118" target="_blank" rel="noopener" class="btn-outline">이력서 확인하기</a>
   </div>
 </section>
 
