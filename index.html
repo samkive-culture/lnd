@@ -195,6 +195,32 @@
     .retro-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .h-stats { gap: 2rem; flex-wrap: wrap; }
     .cb-nums { gap: 1.5rem; }
+
+    /* Mobile: drop the absolute-overlay / fixed-height card stage.
+       Show the back (full content) in normal flow so cards size to content. */
+    .card-body { height: auto !important; }
+    .card-front, .card-back {
+      position: static; height: auto; opacity: 1;
+    }
+    .card-front { display: block; }         /* keep number + title visible */
+    .card-front .card-photo { display: none; } /* but drop the teaser photo (back has richer imagery) */
+    .cf-wide .card-front .card-photo { display: none; }
+    .card-front { margin-bottom: 1.5rem; }  /* space before the back content */
+    .cf-wide { display: block; }            /* undo grid on mobile front */
+    .card-back { opacity: 1; pointer-events: auto; overflow: visible; }
+    .btn-tog { display: none; }             /* no toggle needed when back is always shown */
+    /* Stack the Case 03 back images vertically on narrow screens */
+    .case-card--wide .cb-vidwrap { flex-direction: column; }
+    .case-card--wide .cb-vidwrap .cb-v-vid,
+    .case-card--wide .cb-vidwrap .cb-v-guide { flex: none; width: 100%; }
+    .case-card--wide .cb-vidwrap .cb-img-box { height: auto; }
+    .case-card--wide .cb-vidwrap video { height: 300px; }
+    .case-card--wide .cb-vidwrap img { height: auto; }
+    /* Case 01/02 back images: natural height on mobile */
+    .cb-img-box img, .cb-img-box video { height: auto; }
+    /* Case 01: match both photos to the same height (culture1 is tall, culture2 is wide) */
+    #card-01 .cb-img-box img { height: 200px; object-fit: cover; }
+    .cb-imgs.single .cb-img-box img { height: auto; }
   }
   @media (max-width: 540px) {
     nav { padding: 0 5vw; }
@@ -525,7 +551,16 @@
   }
 
   function sizeAllCards() {
-    const twoCol = window.matchMedia('(min-width: 841px)').matches;
+    // Mobile: cards are laid out in normal flow (see CSS @media),
+    // so never pin pixel heights — that caused overlap & scroll jumps.
+    if (!window.matchMedia('(min-width: 841px)').matches) {
+      ['01','02','03'].forEach(num => {
+        const body = document.getElementById('body-' + num);
+        if (body) body.style.height = '';
+      });
+      return;
+    }
+    const twoCol = true;
     const h1 = backHeight('01');
     const h2 = backHeight('02');
     if (twoCol) {
