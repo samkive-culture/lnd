@@ -154,6 +154,18 @@
   .cn-lbl { font-size: 0.69rem; color: #555; margin-top: 0.2rem; line-height: 1.4; }
   .cb-rtext { font-size: 0.87rem; color: #444; line-height: 1.78; }
 
+  /* VOICES BAND — 교육생 후기 (full-width strip) */
+  .voices { background: var(--parch); padding: 4.5rem 7vw; border-top: 1px solid var(--line); }
+  .voices-head { display: flex; align-items: baseline; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2.2rem; }
+  .voices-title { font-size: clamp(1.1rem, 1.9vw, 1.4rem); font-weight: 600; letter-spacing: -0.02em; word-break: keep-all; }
+  .voices-title em { color: var(--accent); font-style: normal; }
+  .voices-note { font-size: 0.72rem; color: var(--muted); }
+  .voice-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+  .voice-card { background: var(--canvas); border: 1px solid var(--line); border-radius: 12px; padding: 1.5rem 1.4rem 1.3rem; position: relative; }
+  .voice-card::before { content: '\201C'; position: absolute; top: 0.45rem; left: 1.1rem; font-size: 2rem; line-height: 1; color: var(--accent); opacity: 0.25; font-family: Georgia, 'Times New Roman', serif; }
+  .voice-q { font-size: 0.845rem; color: #333; line-height: 1.68; word-break: keep-all; }
+  .voice-src { margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid var(--line); font-size: 0.66rem; letter-spacing: 0.03em; color: var(--accent); font-weight: 500; }
+
   /* RETRO */
   .retro { background: var(--dark); padding: 7rem 7vw; border-top: 1px solid #2a2a2a; }
   .retro .s-eye { color: #3a3a3a; }
@@ -193,6 +205,8 @@
     .cf-wide .card-photo { margin: 1.5rem -2rem 0; border-radius: 0; }
     .cf-wide .card-photo img { border-radius: 0; }
     .retro-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .voice-list { grid-template-columns: 1fr; gap: 0.8rem; }
+    .voices { padding: 3.5rem 7vw; }
     .h-stats { gap: 2rem; flex-wrap: wrap; }
     .cb-nums { gap: 1.5rem; }
 
@@ -227,7 +241,7 @@
     nav { padding: 0 5vw; }
     .nav-links { gap: 1.3rem; }
     .hero { padding: 9rem 5vw 10vw; }
-    .about, .cases, .retro, .contact { padding-left: 5vw; padding-right: 5vw; }
+    .about, .cases, .voices, .retro, .contact { padding-left: 5vw; padding-right: 5vw; }
     footer { padding: 2rem 5vw; flex-direction: column; gap: 0.5rem; text-align: center; }
   }
   </style>
@@ -240,6 +254,7 @@
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#cases">Cases</a>
+    <a href="#voices">Voices</a>
     <a href="#retro">Retrospective</a>
     <a href="#contact">Contact</a>
   </div>
@@ -474,6 +489,28 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- VOICES -->
+<section class="voices" id="voices">
+  <div class="voices-head">
+    <h2 class="voices-title">숫자가 효율을 증명했다면,<br><em>이 문장들은 문화를 증명합니다.</em></h2>
+    <p class="voices-note">제가 설계한 온보딩을 처음 통과한 신규 입사자들의 서베이 응답 中</p>
+  </div>
+  <div class="voice-list" data-rv>
+    <div class="voice-card">
+      <p class="voice-q">온보딩 프로그램을 통해 테라로사의 브랜드 가치를 더 느낄 수 있었습니다.</p>
+      <p class="voice-src">프로그램 → 브랜드 내재화</p>
+    </div>
+    <div class="voice-card">
+      <p class="voice-q">처음 접하는 회사의 이미지가, 교육과 경험으로 더욱 좋아졌습니다.</p>
+      <p class="voice-src">교육 → 고용주 이미지</p>
+    </div>
+    <div class="voice-card">
+      <p class="voice-q">여러 분야를 어떻게 하면 저희가 잘 이해할지 고민하신 흔적이 보여, 일원이 된 게 뿌듯했습니다.</p>
+      <p class="voice-src">교수 설계 → 소속감</p>
+    </div>
   </div>
 </section>
 
