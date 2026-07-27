@@ -120,7 +120,7 @@
 
   /* Wide card (case 03) */
   .cf-wide { display: grid; grid-template-columns: 1fr 52%; gap: 2rem; align-items: stretch; height: 100%; }
-  .cf-wide .card-photo { margin: 0; border-radius: 14px; display: flex; align-items: center; background: var(--canvas); }
+  .cf-wide .card-photo { margin: 0; border-radius: 14px; display: flex; align-items: center; background: transparent; }
   .cf-wide .card-photo img { border-radius: 14px; height: auto; }
   .cf-wide .card-photo::after { display: none; }
   .cf-wide .cf-stack { display: flex; flex-direction: column; justify-content: center; gap: 12px; }
@@ -153,6 +153,20 @@
   .cn-num { font-size: 1.9rem; font-weight: 700; color: var(--accent); letter-spacing: -0.02em; line-height: 1; }
   .cn-lbl { font-size: 0.69rem; color: #555; margin-top: 0.2rem; line-height: 1.4; }
   .cb-rtext { font-size: 0.87rem; color: #444; line-height: 1.78; }
+  .cb-rtext strong { font-weight: 600; color: var(--ink); }
+
+  /* GROWTH MINI-CHART — 연도별 온보딩 인원 */
+  .growth { display: flex; align-items: flex-end; gap: 7px; margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid rgba(198,41,23,0.15); }
+  .g-col { flex: 1; display: flex; flex-direction: column; align-items: center; }
+  .g-val { font-size: 0.6rem; color: var(--muted); margin-bottom: 4px; letter-spacing: -0.01em; }
+  .g-bar { width: 100%; max-width: 44px; border-radius: 3px 3px 0 0; background: rgba(0,0,0,0.14); }
+  .g-yr { font-size: 0.58rem; color: var(--muted); margin-top: 5px; letter-spacing: 0.02em; }
+  .g-col.is-peak .g-bar { background: var(--accent); }
+  .g-col.is-peak .g-val { color: var(--accent); font-weight: 700; font-size: 0.68rem; }
+  .g-col.is-peak .g-yr { color: var(--accent); font-weight: 600; }
+  .g-col.is-partial .g-bar { background: repeating-linear-gradient(135deg, rgba(198,41,23,0.42) 0 4px, rgba(198,41,23,0.18) 4px 8px); }
+  .g-cap { font-size: 0.66rem; color: var(--muted); margin-top: 0.7rem; line-height: 1.5; }
+  .g-cap em { color: var(--accent); font-style: normal; font-weight: 600; }
 
   /* VOICES BAND — 교육생 후기 (full-width strip) */
   .voices { background: var(--parch); padding: 4.5rem 7vw; border-top: 1px solid var(--line); }
@@ -279,12 +293,8 @@
       <div class="hs-lbl">온보딩 KPI 달성<br>97% 소프트랜딩</div>
     </div>
     <div>
-      <div class="hs-num">300명</div>
-      <div class="hs-lbl">교육생 직접 훈련·평가<br>사내 트레이너</div>
-    </div>
-    <div>
-      <div class="hs-num">7년</div>
-      <div class="hs-lbl">현장 → 교육·문화 설계<br>테라로사 재직 중</div>
+      <div class="hs-num">2.1배</div>
+      <div class="hs-lbl">연간 온보딩 규모 확대<br>99명 → 209명</div>
     </div>
   </div>
 </section>
@@ -300,9 +310,9 @@
       </p>
       <ul class="about-facts">
         <li>테라로사 7년 9개월 — 바리스타로 시작해 2021년부터 5년간 조직의 HRD 기능을 밑그림부터 구축·운영한 사내 유일 현장 출신 교육 기획자</li>
-        <li>AI를 무기로 HTML/CSS/JS 웹 시스템 직접 개발 · Premiere Pro 독학 영상 제작 · 154p 매뉴얼 단독 집필</li>
-        <li>교육생 약 300명 직접 훈련·평가 배출 · 美 커피 평가 기관 ACE 국제 센서리 교육 조교·통역 참여</li>
-        <li>연간 200명 규모 온보딩 설계 · KPI 124% 달성</li>
+        <li>AI를 무기로 HTML/CSS/JS 웹 시스템 직접 개발 · Premiere Pro 독학 영상 제작 · 298p 매뉴얼 단독 집필</li>
+        <li>교육생 600명 이상 직접 훈련·평가 배출 · 美 커피 평가 기관 ACE 국제 센서리 교육 조교·통역 참여</li>
+        <li>온보딩 체계 개편으로 연간 교육 인원 99명 → 209명 2.1배 확대 · KPI 124% 달성</li>
       </ul>
     </div>
     <div class="pillars">
@@ -349,18 +359,13 @@
         <p class="cb-open">전사에 '우리다운 것'이 무엇인지, 정의조차 없었습니다.</p>
         <ul class="cb-acts">
           <li>
-            <strong>브랜드 매뉴얼북 기획·집필 (0→1)</strong> —
-            추상적으로 떠돌던 핵심 가치와 일하는 방식을 처음으로 문서화했습니다.
-            누구나 책 한 권으로 조직의 미션을 이해할 수 있는 뼈대를 세웠습니다.
+            <strong>브랜드 매뉴얼북 집필 (0→1)</strong> — 핵심 가치와 일하는 방식을 처음으로 문서화
           </li>
           <li>
-            <strong>사내 소식지 직접 구축</strong> —
-            AI를 활용해 HTML/CSS/JS 웹 기반 소식지를 단독 제작하고,
-            팀 누구나 운영할 수 있도록 이관했습니다.
+            <strong>사내 소식지 직접 구축</strong> — 웹 기반으로 단독 제작 후 팀에 이관
           </li>
           <li>
-            <strong>호칭 '님' 단일화 캠페인 내재화</strong> —
-            경영진과 협업해 수평적 소통 문화를 설계하고, 온보딩 커리큘럼 전반에 녹여냈습니다.
+            <strong>호칭 '님' 단일화 캠페인</strong> — 경영진과 협업, 온보딩 전반에 내재화
           </li>
         </ul>
         <div class="cb-imgs">
@@ -369,6 +374,16 @@
         </div>
         <p class="cb-cap">직접 기획·집필한 통합 매뉴얼북 (좌) / HTML·CSS로 구축한 사내 소식지 (우)</p>
         <div class="cb-result">
+          <div class="cb-nums">
+            <div>
+              <div class="cn-num">298p</div>
+              <div class="cn-lbl">브랜드 매뉴얼북<br>단독 기획·집필</div>
+            </div>
+            <div>
+              <div class="cn-num">0→1</div>
+              <div class="cn-lbl">전사 핵심 가치<br>최초 문서화</div>
+            </div>
+          </div>
           <p class="cb-rtext">추상적으로 떠돌던 가치가 책 한 권과 웹 소식지라는 실체가 되어 온보딩 커리큘럼의 뼈대로 자리 잡았고, 수동적이던 현장에 수평적 커뮤니케이션 문화가 안착했습니다.</p>
         </div>
       </div>
@@ -393,19 +408,13 @@
         <p class="cb-open">원인은 개인의 역량 부족이 아니었습니다. 교육·실행·피드백이 단절된 구조였습니다.</p>
         <ul class="cb-acts">
           <li>
-            <strong>순환 온보딩 아키텍처 단독 설계</strong> —
-            수동적 집체 교육을 끊고 현장에서 스스로 학습하며 팀의 지원을 받는
-            3-3-2일/월 단위 순환 구조를 처음부터 설계했습니다.
+            <strong>순환 온보딩 설계</strong> — 집체 교육을 3-3-2 현장 순환 구조로 전환
           </li>
           <li>
-            <strong>리더십 패러다임 전환</strong> —
-            리더를 '지시자'에서 '코치'로 재정의하는 교육을 온보딩과 병행해,
-            시스템을 수용할 수 있는 현장 환경을 먼저 조성했습니다.
+            <strong>리더십 패러다임 전환</strong> — 리더를 '지시자'에서 '코치'로 재정의
           </li>
           <li>
-            <strong>AI 활용 온보딩 사이트 단독 구축</strong> —
-            AI를 활용해 교육 트래커·단계별 퀴즈·최종 평가가 담긴 신규 입사자 전용 사이트를
-            HTML/CSS/JS로 단독 제작했습니다. 외주도, 별도 예산도 없이.
+            <strong>온보딩 사이트 단독 구축</strong> — 트래커·퀴즈·평가를 HTML/CSS/JS로
           </li>
         </ul>
         <div class="cb-imgs single">
@@ -429,7 +438,15 @@
               <div class="cn-lbl">온보딩 KPI<br>초과 달성</div>
             </div>
           </div>
-          <p class="cb-rtext">연간 200명 규모에도 동일 품질을 유지할 수 있는 확장형 시스템. 월 1회이던 채용을 월 2회로 늘릴 수 있는 운영 효율을 달성했습니다.</p>
+          <p class="cb-rtext">개편 전 연간 99명이던 온보딩 규모를 2025년 209명으로 <strong>2.1배 확대</strong>했습니다. 인원이 두 배가 되어도 품질이 흔들리지 않는, 확장 가능한 구조라는 뜻입니다.</p>
+          <div class="growth">
+            <div class="g-col"><span class="g-val">70</span><div class="g-bar" style="height:24px"></div><span class="g-yr">'22</span></div>
+            <div class="g-col"><span class="g-val">75</span><div class="g-bar" style="height:26px"></div><span class="g-yr">'23</span></div>
+            <div class="g-col"><span class="g-val">99</span><div class="g-bar" style="height:34px"></div><span class="g-yr">'24</span></div>
+            <div class="g-col is-peak"><span class="g-val">209</span><div class="g-bar" style="height:72px"></div><span class="g-yr">'25</span></div>
+            <div class="g-col is-partial"><span class="g-val">150</span><div class="g-bar" style="height:52px"></div><span class="g-yr">'26</span></div>
+          </div>
+          <p class="g-cap">연도별 온보딩 교육 인원 (명) · <em>2025년 체계 개편</em>으로 월 1회 → 2회 채용 전환 · '26년은 7월 현재 진행 중</p>
         </div>
       </div>
       </div>
@@ -501,15 +518,15 @@
   <div class="voice-list" data-rv>
     <div class="voice-card">
       <p class="voice-q">온보딩 프로그램을 통해 테라로사의 브랜드 가치를 더 느낄 수 있었습니다.</p>
-      <p class="voice-src">프로그램 → 브랜드 내재화</p>
+      <p class="voice-src">가치 내재화</p>
     </div>
     <div class="voice-card">
       <p class="voice-q">처음 접하는 회사의 이미지가, 교육과 경험으로 더욱 좋아졌습니다.</p>
-      <p class="voice-src">교육 → 고용주 이미지</p>
+      <p class="voice-src">내부 브랜딩</p>
     </div>
     <div class="voice-card">
       <p class="voice-q">여러 분야를 어떻게 하면 저희가 잘 이해할지 고민하신 흔적이 보여, 일원이 된 게 뿌듯했습니다.</p>
-      <p class="voice-src">교수 설계 → 소속감</p>
+      <p class="voice-src">교수 설계</p>
     </div>
   </div>
 </section>
